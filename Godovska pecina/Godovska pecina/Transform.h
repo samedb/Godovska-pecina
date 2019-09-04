@@ -8,6 +8,6 @@ public:
 	Vektor3f rotation;
 	Vektor3f scale;
 
-	Transform(Vektor3f position = Vektor3f(), Vektor3f rotation = Vektor3f(), Vektor3f scale = Vektor3f());
+	Transform(Vektor3f position = Vektor3f(), Vektor3f rotation = Vektor3f(), Vektor3f scale = Vektor3f(1, 1, 1));
 };
 

@@ -125,11 +125,13 @@
   <ItemGroup>
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Snesko.cpp" />
     <ClCompile Include="Transform.cpp" />
     <ClCompile Include="Vektor3f.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="Snesko.h" />
     <ClInclude Include="Transform.h" />
     <ClInclude Include="Vektor3f.h" />
   </ItemGroup>

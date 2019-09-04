@@ -3,7 +3,10 @@
 #include <stdlib.h>
 #include <math.h>
 #include <iostream>
+
 #include "Vektor3f.h"
+#include "Snesko.h"
+#include "Transform.h"
 
 using namespace std;
 
@@ -16,6 +19,7 @@ int windowWidth, windowHeight; // za crosshair mi treba, posto on treba da ide n
 
 
 Vektor3f pozicijeKocki[10];
+Snesko go(Transform(Vektor3f(-10, 0, -10)));
 
 void cubepositions(void) { //set the positions of the cubes
 
@@ -135,12 +139,15 @@ void display(void) {
 	camera();
 	enable();
 
+	go.transform.rotation.y++;
+	go.draw();
+
 	koordinate();
 	zid();
 	podloga();
 	sunce();
 	cube(); //call the cube drawing function
-	drawCroshair();
+
 	glutSwapBuffers(); //swap the buffers
 	angle++; //increase the angle
 }
