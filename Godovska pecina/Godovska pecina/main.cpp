@@ -19,7 +19,9 @@ int windowWidth, windowHeight; // za crosshair mi treba, posto on treba da ide n
 
 
 Vektor3f pozicijeKocki[10];
-Snesko go(Transform(Vektor3f(-10, 0, -10)));
+Snesko snesko[3] = { Snesko(Transform(Vektor3f(-10, 0, -10))), 
+					 Snesko(Transform(Vektor3f(-20, 0, -10))), 
+					 Snesko(Transform(Vektor3f(-10, 0, -20))) };
 
 void cubepositions(void) { //set the positions of the cubes
 
@@ -139,8 +141,11 @@ void display(void) {
 	camera();
 	enable();
 
-	go.transform.rotation.y++;
-	go.draw();
+	for (int i = 0; i < 3; i++)
+	{
+		snesko[i].transform.rotation.y += i + 1;
+		snesko[i].draw();
+	}
 
 	koordinate();
 	zid();
