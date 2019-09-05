@@ -10,7 +10,9 @@ public:
 	Transform transform;
 
 	GameObject(Transform transform = Transform());
-	void draw();
+	virtual void update(); // update posle svakog frejma
+	// moze da ima i update sa delta time
+	virtual void draw(); // ako zeli jos vecu kontrolu nad crtanjem onda se preklapa ova, kao npr kod Kamere
 	virtual void render(); // ovu funkciju preklapaju klase koje nasledjuju ovu, definise kako se GameObject crta
 };
 

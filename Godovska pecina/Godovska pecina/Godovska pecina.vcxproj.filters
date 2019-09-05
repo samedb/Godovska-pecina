@@ -30,6 +30,15 @@
     <ClCompile Include="Snesko.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Kamera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Sunce.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Teren.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Vektor3f.h">
@@ -42,6 +51,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Snesko.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Kamera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Sunce.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Teren.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

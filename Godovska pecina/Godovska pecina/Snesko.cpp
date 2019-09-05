@@ -50,3 +50,8 @@ void Snesko::render()
 	glutSolidSphere(0.75, 20, 20); // shadow same size as body
 	glPopMatrix();
 }
+
+void Snesko::update()
+{
+	transform.rotation.y += transform.position.z / 10;
+}

@@ -7,5 +7,6 @@ class Snesko: public GameObject
 public:
 	Snesko(Transform transform = Transform());
 	void render();
+	void update();
 };
 
