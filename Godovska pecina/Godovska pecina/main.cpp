@@ -19,6 +19,7 @@ int windowWidth, windowHeight; // za crosshair mi treba, posto on treba da ide n
 
 
 Vektor3f pozicijeKocki[10];
+
 Snesko snesko[3] = { Snesko(Transform(Vektor3f(-10, 0, -10))), 
 					 Snesko(Transform(Vektor3f(-20, 0, -10))), 
 					 Snesko(Transform(Vektor3f(-10, 0, -20))) };
@@ -133,7 +134,28 @@ void drawCroshair()
 	glRectf(windowWidth / 2 - 1, windowHeight / 2 - 1, windowWidth / 2 + 1, windowHeight / 2 + 1);
 }
 
+bool napred = false, nazad = false, desno = false, levo = false;
+
+void updatePozicijuIgraca() 
+{
+	float brzina = 0.5;
+	float x1 = desno - levo, z1 = nazad - napred; // (x1, z1) predstavlju vektor koliko treba pomeriti igraca ali pre rotacije
+
+	float ugao = yrot * 3.1415 / 180; // ugao u radijanima koliko je kamera okrenuta po y osi, 
+
+	// vektor (x1, z1) rotiram za ugao po formuli za rotaciju 2d vektora i dobijam novi vektor (x2, z2);
+	float x2 = x1 * cos(ugao) - z1 * sin(ugao);
+	float z2 = x1 * sin(ugao) + z1 * cos(ugao);
+
+	// kameru pomerim za taj novi rotirani vektor
+	xpos += x2 * brzina;
+	zpos += z2 * brzina;
+}
+
 void display(void) {
+
+	updatePozicijuIgraca();
+
 	glClearColor(0.0, 0.0, 0.0, 1.0); //clear the screen to black
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //clear the color buffer and the depth buffer
 	glLoadIdentity();
@@ -224,6 +246,46 @@ void keyboard(unsigned char key, int x, int y) {
 	}
 }
 
+
+void keyboardDown(unsigned char key, int x, int y) {
+	switch (key) 
+	{
+	case 27:
+		exit(0);
+		break;
+	case 'w':
+		napred = true;
+		break;
+	case 's':
+		nazad = true;
+		break;
+	case 'a':
+		levo = true;
+		break;
+	case 'd':
+		desno = true;
+		break;
+	}
+}
+
+void keyboardUp(unsigned char key, int x, int y) {
+	switch (key) 
+	{
+	case 'w':
+		napred = false;
+		break;
+	case 's':
+		nazad = false;
+		break;
+	case 'a':
+		levo = false;
+		break;
+	case 'd':
+		desno = false;
+		break;
+	}
+}
+
 void mouseMovement(int x, int y) {
 	yrot += (x - 400) * 0.1;
 	int deltaY = y - 300;
@@ -248,7 +310,9 @@ int main(int argc, char** argv) {
 
 	glutPassiveMotionFunc(mouseMovement); //check for mouse movement
 
-	glutKeyboardFunc(keyboard);
+	glutIgnoreKeyRepeat(1);
+	glutKeyboardFunc(keyboardDown);
+	glutKeyboardUpFunc(keyboardUp);
 	glutMainLoop();
 	return 0;
 }
