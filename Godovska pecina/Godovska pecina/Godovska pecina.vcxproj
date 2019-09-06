@@ -126,6 +126,7 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Kamera.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Scena.cpp" />
     <ClCompile Include="Snesko.cpp" />
     <ClCompile Include="Sunce.cpp" />
     <ClCompile Include="Teren.cpp" />
@@ -135,6 +136,7 @@
   <ItemGroup>
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Kamera.h" />
+    <ClInclude Include="Scena.h" />
     <ClInclude Include="Snesko.h" />
     <ClInclude Include="Sunce.h" />
     <ClInclude Include="Teren.h" />

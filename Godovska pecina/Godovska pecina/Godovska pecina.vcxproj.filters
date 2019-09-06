@@ -39,6 +39,9 @@
     <ClCompile Include="Teren.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Scena.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Vektor3f.h">
@@ -60,6 +63,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Teren.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Scena.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

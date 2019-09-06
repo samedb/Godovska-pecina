@@ -10,63 +10,80 @@
 #include "Kamera.h"
 #include "Sunce.h"
 #include "Teren.h"
+#include "Scena.h"
 
 using namespace std;
 
-vector<GameObject*> elementiScene;
+Scena scena1, scena2;
 Kamera kamera = Kamera(Vektor3f(0, 2, 0));
 
 void postaviScenu()
 {
-	elementiScene.push_back(&kamera);
-	/*elementiScene.push_back(new Snesko(Vektor3f(-10, 0, -10)));
-	elementiScene.push_back(new Snesko(Vektor3f(-20, 0, -10)));
-	elementiScene.push_back(new Snesko(Vektor3f(-10, 0, -20)));*/
+	scena1.dodaj(&kamera);
+	// dodaj sneskove? oko terena
 	for (int i = 0; i < 9; i++)
 		for (int j = 0; j < 9; j++)
 			if (i == 0 || i == 8 || j == 0 || j ==8)
-				elementiScene.push_back(new Snesko(Vektor3f(i * -10, -1, j * -10)));
-	elementiScene.push_back(new Snesko(Transform(Vektor3f(-40, -1, -40), Vektor3f(), Vektor3f(10, 10, 10))));
-	elementiScene.push_back(new Sunce(Vektor3f(0, 20, 0)));
-	elementiScene.push_back(new Teren());
+				scena1.dodaj(new Snesko(Vektor3f(i * -10, -1, j * -10)));
+	// jedan veliki snesko u sredini
+	scena1.dodaj(new Snesko(Transform(Vektor3f(-40, -1, -40), Vektor3f(), Vektor3f(10, 10, 10))));
+	scena1.dodaj(new Sunce(Vektor3f(0, 20, 0)));
+	scena1.dodaj(new Teren());
 
+	// dodaj gameobjecte (kocke) sa random pozicijama
 	for (int i = 0; i < 10; i++)
 	{
 		float x = -10 * (rand() % 5 + 5);
 		float z = -10 * (rand() % 5 + 5);
-		elementiScene.push_back(new GameObject(Vektor3f(x, 0, z)));
+		scena1.dodaj(new GameObject(Vektor3f(x, 0, z)));
 	}
+
+
+	// iskorpiraj sve to u scenu2 i onda pomeri poziciju
+	scena2 = scena1;
+	scena2.elementiScene[0] = scena2.elementiScene[2];
+	scena2.transform.position.x += 150;
+
+	scena1.dodaj(&scena2);
 }
 
+int animationPeriod = 16;
 
-void enable(void) 
+// rekurzivna funkcija koja vrsi PostRedisplay posle nekog perioda animationPeriod
+// tako da igra uvek ima isti broj fps-a
+// nije savrseno ali sluzi svrsi
+void animate(int value) {
+	glutPostRedisplay();
+	glutTimerFunc(animationPeriod, animate, 1);
+}
+
+void setup(void) 
 {
 	glEnable(GL_DEPTH_TEST); //enable the depth testing
 	//glEnable(GL_LIGHTING); //enable the lighting
 	//glEnable(GL_LIGHT0); //enable LIGHT0, our Diffuse Light
 	//glShadeModel(GL_SMOOTH); //set the shader to smooth shader
-	ShowCursor(false);
+	glEnable(GLUT_MULTISAMPLE); // msaa 
+	animate(1);
 }
 
-
+// Vrsi renderovanje svih elemenata jedne scene i poziva update za njih
 void display(void) 
 {
+	ShowCursor(false);
 	glClearColor(0.0, 0.7, 1.0, 1.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //clear the color buffer and the depth buffer
 	glLoadIdentity();
-	enable();
 
-	for (GameObject* go : elementiScene) {
-		go->update();
-		go->draw();
-	}
+	scena1.update();
+	scena1.draw();
 
 	glutSwapBuffers(); //swap the buffers
 }
 
 void keyboardDown(unsigned char key, int x, int y) 
 {
-	switch (key) 
+	switch (key)
 	{
 	case 27:
 		exit(0);
@@ -107,7 +124,6 @@ void keyboardUp(unsigned char key, int x, int y)
 
 void mouseMovement(int x, int y) 
 {
-
 	kamera.passiveMotionFunc(x, y);
 }
 
@@ -119,12 +135,12 @@ void reshape(int w, int h)
 int main(int argc, char** argv) 
 {
 	glutInit(&argc, argv);
-	glutInitDisplayMode(GLUT_DOUBLE | GLUT_DEPTH);
+	glutInitDisplayMode(GLUT_DOUBLE | GLUT_DEPTH | GLUT_MULTISAMPLE);
 	glutInitWindowSize(1280, 720);
 	glutInitWindowPosition(100, 100);
 	glutCreateWindow("Godovska pecina");
 	glutDisplayFunc(display);
-	glutIdleFunc(display);
+	//glutIdleFunc(display);
 	glutReshapeFunc(reshape);
 	glutPassiveMotionFunc(mouseMovement); //check for mouse movement
 
@@ -133,6 +149,7 @@ int main(int argc, char** argv)
 	glutKeyboardUpFunc(keyboardUp);
 
 	postaviScenu();
+	setup();
 	glutMainLoop();
 	return 0;
 }

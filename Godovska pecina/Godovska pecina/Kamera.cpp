@@ -12,7 +12,20 @@ void Kamera::draw()
 {
 	glRotatef(transform.rotation.x , 1.0, 0.0, 0.0);  //rotate our camera on teh x - axis(left and right)
 	glRotatef(transform.rotation.y, 0.0, 1.0, 0.0);  //rotate our camera on the	y - axis(up and down)
-	glTranslated(-transform.position.x, -transform.position.y, -transform.position.z); //translate the screen to the position of our camera
+	glTranslated(-transform.position.x, -transform.position.y, -transform.position.z); //translate the screen to the position of our camera																		// gde je gore, po y osi je	
+
+
+	// Za neki drugi put 
+	// Da uradim kameru preko gluLookAt
+	//
+	//Vektor3f centar; // tacka u koju kamera gleda
+	//centar.x = transform.position.x + cos(transform.rotation.y * 3.14159 / 180);
+	//centar.z = transform.position.z + sin(transform.rotation.y * 3.14159 / 180);
+	//centar.y = transform.position.y + tan(transform.rotation.x * 3.14150 / 180) * sqrt(centar.x * centar.x + centar.z * centar.z);
+
+	//gluLookAt(transform.position.x, transform.position.y, transform.position.z,			// pozicija kamere
+	//		  centar.x, centar.y, centar.z,
+	//		  0, -1, 0);
 }
 
 void Kamera::reshapeFunc(int w, int h)
@@ -41,7 +54,6 @@ void Kamera::passiveMotionFunc(int x, int y)
 
 void Kamera::update()
 {
-
 	float x1 = desno - levo, z1 = nazad - napred; // (x1, z1) predstavlju vektor koliko treba pomeriti igraca ali pre rotacije
 
 	float ugao = transform.rotation.y * 3.1415 / 180; // ugao u radijanima koliko je kamera okrenuta po y osi, 
