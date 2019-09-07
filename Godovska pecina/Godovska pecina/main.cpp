@@ -64,9 +64,8 @@ void postaviScenu()
 
 	hexa.dodaj(&kamera);
 	hexa.dodaj(new LinijeKoordinatnogSistema());
-	//hexa.dodaj(new HexPiramida(Transform(Vektor3f(0, 0, 0), Vektor3f(0, 0, 0), Vektor3f(1, 1, 1))));
-	hexa.dodaj(new HexPiramida(Transform(Vektor3f(1, 0, 0), Vektor3f(40.7, 30.5, 0), Vektor3f(1, 1, 1)), 13.2));
-	//hexa.dodaj(new GameObject(Transform(Vektor3f(5, 10, 7), Vektor3f(), Vektor3f(1, 1, 1))));
+	hexa.dodaj(new HexPiramida(Transform(Vektor3f(1, 0, 0), Vektor3f(40.7, 30.5, 0), Vektor3f(1, 1, 1)), 13.2)); // 13.2 je intenzitet vektora (5, 10, 7)
+	//hexa.dodaj(new GameObject(Transform(Vektor3f(5, 10, 7), Vektor3f(), Vektor3f(1, 1, 1)))); // kocka na poziciji(5, 10, 7)
 }
 
 int animationPeriod = 16;
