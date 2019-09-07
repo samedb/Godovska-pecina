@@ -11,6 +11,8 @@
 #include "Sunce.h"
 #include "Teren.h"
 #include "Scena.h"
+#include "HexPiramida.h"
+#include "LinijeKoordinatnogSistema.h"
 
 using namespace std;
 
@@ -58,7 +60,6 @@ void postaviScenu()
 	scena4.transform.position.x -= 120;
 	scena4.transform.rotation.y += 180;
 	scena1.dodaj(&scena4);
-
 }
 
 int animationPeriod = 16;
@@ -76,9 +77,29 @@ void setup(void)
 	glEnable(GL_DEPTH_TEST); //enable the depth testing
 	//glEnable(GL_LIGHTING); //enable the lighting
 	//glEnable(GL_LIGHT0); //enable LIGHT0, our Diffuse Light
-	//glShadeModel(GL_SMOOTH); //set the shader to smooth shader
 	glEnable(GLUT_MULTISAMPLE); // msaa 
 	animate(1);
+
+	//glEnable(GL_COLOR_MATERIAL);
+	//glEnable(GL_LIGHTING);
+
+	//// Light property vectors.
+	//float lightAmb[] = { 0.0, 0.0, 0.0, 1.0 };
+	//float lightDifAndSpec[] = { 1.0, 1.0, 1.0, 1.0 };
+	//float lightPos[] = { 0.0, 10, 0, 1.0 };
+	//float globAmb[] = { 0.2, 0.2, 0.2, 1.0 };
+
+	//// Light properties.
+	//glLightfv(GL_LIGHT0, GL_AMBIENT, lightAmb);
+	//glLightfv(GL_LIGHT0, GL_DIFFUSE, lightDifAndSpec);
+	//glLightfv(GL_LIGHT0, GL_SPECULAR, lightDifAndSpec);
+	//glLightfv(GL_LIGHT0, GL_POSITION, lightPos);
+
+	//glEnable(GL_LIGHT0); // Enable particular light source.
+	//glLightModelfv(GL_LIGHT_MODEL_AMBIENT, globAmb); // Global ambient light.
+	//glLightModeli(GL_LIGHT_MODEL_TWO_SIDE, GL_TRUE); // Enable two-sided lighting.
+	//glLightModeli(GL_LIGHT_MODEL_LOCAL_VIEWER, GL_TRUE); // Enable local viewpoint.
+	//glShadeModel(GL_SMOOTH); //set the shader to smooth shader
 }
 
 // Vrsi renderovanje svih elemenata jedne scene i poziva update za njih
@@ -89,8 +110,22 @@ void display(void)
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //clear the color buffer and the depth buffer
 	glLoadIdentity();
 
+
+
+
 	scena1.update();
 	scena1.draw();
+
+	//// Material property vectors.
+	//float matAmbAndDif1[] = { 0.9, 0.0, 0.0, 1.0 };
+	//float matAmbAndDif2[] = { 0.0, 0.9, 0.0, 1.0 };
+	//float matSpec[] = { 1.0, 1.0, 1.0, 1.0 };
+	//float matShine[] = { 50.0 };
+
+	//// Material properties of the box.
+	//glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, matAmbAndDif1);
+	//glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, matSpec);
+	//glMaterialfv(GL_FRONT_AND_BACK, GL_SHININESS, matShine);
 
 	glutSwapBuffers(); //swap the buffers
 }

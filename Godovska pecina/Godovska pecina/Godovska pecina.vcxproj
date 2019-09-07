@@ -124,7 +124,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="HexPiramida.cpp" />
     <ClCompile Include="Kamera.cpp" />
+    <ClCompile Include="LinijeKoordinatnogSistema.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Scena.cpp" />
     <ClCompile Include="Snesko.cpp" />
@@ -135,7 +137,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="HexPiramida.h" />
     <ClInclude Include="Kamera.h" />
+    <ClInclude Include="LinijeKoordinatnogSistema.h" />
     <ClInclude Include="Scena.h" />
     <ClInclude Include="Snesko.h" />
     <ClInclude Include="Sunce.h" />
