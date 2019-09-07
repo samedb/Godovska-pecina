@@ -14,27 +14,27 @@
 
 using namespace std;
 
-Scena scena1, scena2;
+Scena scena1, scena2, scena3, scena4;
 Kamera kamera = Kamera(Vektor3f(0, 2, 0));
 
 void postaviScenu()
 {
 	scena1.dodaj(&kamera);
 	// dodaj sneskove? oko terena
-	for (int i = 0; i < 9; i++)
-		for (int j = 0; j < 9; j++)
-			if (i == 0 || i == 8 || j == 0 || j ==8)
-				scena1.dodaj(new Snesko(Vektor3f(i * -10, -1, j * -10)));
+	for (int i = -4; i < 5; i++)
+		for (int j = -4; j < 5; j++)
+			if (i == -4 || i == 4 || j == -4 || j ==4)
+				scena1.dodaj(new Snesko(Vektor3f(i * 10, -1, j * 10)));
 	// jedan veliki snesko u sredini
-	scena1.dodaj(new Snesko(Transform(Vektor3f(-40, -1, -40), Vektor3f(), Vektor3f(10, 10, 10))));
+	scena1.dodaj(new Snesko(Transform(Vektor3f(-10, -1, -10), Vektor3f(), Vektor3f(10, 10, 10))));
 	scena1.dodaj(new Sunce(Vektor3f(0, 20, 0)));
 	scena1.dodaj(new Teren());
 
 	// dodaj gameobjecte (kocke) sa random pozicijama
 	for (int i = 0; i < 10; i++)
 	{
-		float x = -10 * (rand() % 5 + 5);
-		float z = -10 * (rand() % 5 + 5);
+		float x = -5 * (rand() % 5 + 5);
+		float z = -5 * (rand() % 5 + 5);
 		scena1.dodaj(new GameObject(Vektor3f(x, 0, z)));
 	}
 
@@ -42,9 +42,23 @@ void postaviScenu()
 	// iskorpiraj sve to u scenu2 i onda pomeri poziciju
 	scena2 = scena1;
 	scena2.elementiScene[0] = scena2.elementiScene[2];
-	scena2.transform.position.x += 150;
-
+	scena2.transform.position.z -= 120;
+	scena2.transform.rotation.y += 90;
 	scena1.dodaj(&scena2);
+
+	scena3 = scena1;
+	scena3.elementiScene[0] = scena3.elementiScene[2];
+	scena3.transform.position.x -= 120;
+	scena3.transform.rotation.y -= 90;
+	scena1.dodaj(&scena3);
+
+	scena4 = scena1;
+	scena4.elementiScene[0] = scena3.elementiScene[2];
+	scena4.transform.position.z -= 120;
+	scena4.transform.position.x -= 120;
+	scena4.transform.rotation.y += 180;
+	scena1.dodaj(&scena4);
+
 }
 
 int animationPeriod = 16;
