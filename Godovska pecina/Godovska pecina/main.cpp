@@ -17,6 +17,7 @@
 using namespace std;
 
 Scena scena1, scena2, scena3, scena4;
+Scena hexa;
 Kamera kamera = Kamera(Vektor3f(0, 2, 0));
 
 void postaviScenu()
@@ -60,6 +61,12 @@ void postaviScenu()
 	scena4.transform.position.x -= 120;
 	scena4.transform.rotation.y += 180;
 	scena1.dodaj(&scena4);
+
+	hexa.dodaj(&kamera);
+	hexa.dodaj(new LinijeKoordinatnogSistema());
+	//hexa.dodaj(new HexPiramida(Transform(Vektor3f(0, 0, 0), Vektor3f(0, 0, 0), Vektor3f(1, 1, 1))));
+	hexa.dodaj(new HexPiramida(Transform(Vektor3f(1, 0, 0), Vektor3f(40.7, 30.5, 0), Vektor3f(1, 1, 1)), 13.2));
+	//hexa.dodaj(new GameObject(Transform(Vektor3f(5, 10, 7), Vektor3f(), Vektor3f(1, 1, 1))));
 }
 
 int animationPeriod = 16;
@@ -106,15 +113,15 @@ void setup(void)
 void display(void) 
 {
 	ShowCursor(false);
-	glClearColor(0.0, 0.7, 1.0, 1.0);
+	glClearColor(0.0, 0.0, 0.0, 1.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //clear the color buffer and the depth buffer
 	glLoadIdentity();
 
 
 
 
-	scena1.update();
-	scena1.draw();
+	hexa.update();
+	hexa.draw();
 
 	//// Material property vectors.
 	//float matAmbAndDif1[] = { 0.9, 0.0, 0.0, 1.0 };
@@ -149,6 +156,19 @@ void keyboardDown(unsigned char key, int x, int y)
 	case 'd':
 		kamera.desno = true;
 		break;
+	case 'i':
+		hexa.elementiScene[2]->transform.rotation.x += 3;
+		break;
+	case 'k':
+		hexa.elementiScene[2]->transform.rotation.x -= 3;
+		break;
+	case 'j':
+		hexa.elementiScene[2]->transform.rotation.z += 3;
+		break;
+	case 'l':
+		hexa.elementiScene[2]->transform.rotation.z -= 3;
+		break;
+
 	}
 }
 
