@@ -62,9 +62,36 @@ void Kamera::update()
 	float x2 = x1 * cos(ugao) - z1 * sin(ugao);
 	float z2 = x1 * sin(ugao) + z1 * cos(ugao);
 
-	// kameru pomerim za taj novi rotirani vektor
-	transform.position.x += x2 * brzinaKretanja;
-	transform.position.z += z2 * brzinaKretanja;
+	movement.x = x2 * brzinaKretanja;
+	movement.z = z2 *brzinaKretanja;
 
-	transform.position.y += (gore - dole) * brzinaKretanja;
+	if (letenje)
+		movement.y = (gore - dole) * brzinaKretanja;
+	else
+	{
+		if (transform.position.y > 2) // ako se nalazi u vazduhu onda gravitacija utice na njega
+			movement.y -= gravitacija;
+		else
+			movement.y = 0;
+
+		// skok
+		if (gore && transform.position.y <= 2) {
+			movement.y = brzinaSkoka;
+		}
+		// cucanj
+		else if (dole)
+			transform.position.y = 1;
+		else if (transform.position.y == 1) // ako nije cucanj
+			transform.position.y = 2; // normalna pozicija
+
+	}
+
+	move(); // updateuj poziciju za vektor movement
+}
+
+void Kamera::move()
+{
+	transform.position.x += movement.x;
+	transform.position.y += movement.y;
+	transform.position.z += movement.z;
 }

@@ -16,6 +16,8 @@
 
 using namespace std;
 
+#pragma region Scena
+
 Scena scena1;
 Kamera kamera = Kamera(Vektor3f(0, 2, 0));
 
@@ -29,6 +31,7 @@ void postaviScenu()
 				scena1.dodaj(new Snesko(Vektor3f(i * 10, -1, j * 10)));
 	// jedan veliki snesko u sredini
 	scena1.dodaj(new Snesko(Transform(Vektor3f(-10, -1, -10), Vektor3f(), Vektor3f(10, 10, 10))));
+	scena1.dodaj(new Snesko(Transform(Vektor3f(-15, -1, -15), Vektor3f(), Vektor3f(10, 10, 10))));
 	scena1.dodaj(new Teren());
 
 	// dodaj gameobjecte (kocke) sa random pozicijama
@@ -63,6 +66,8 @@ void postaviScenu()
 	scena1.dodaj(new Sunce(Vektor3f(0, 30, 0)));
 }		  
 
+#pragma endregion
+
 int animationPeriod = 16;
 
 // rekurzivna funkcija koja vrsi PostRedisplay posle nekog perioda animationPeriod
@@ -75,34 +80,12 @@ void animate(int value) {
 
 void setup(void) 
 {
+	glClearColor(0.0, 0.7, 1.0, 1.0);
+
 	glEnable(GL_DEPTH_TEST); //enable the depth testing
 	glEnable(GLUT_MULTISAMPLE); // msaa anti aliasing
 	glEnable(GL_NORMALIZE); // resava probleme sa skaliranjem i osvetljenjem
 	glutIgnoreKeyRepeat(1); // iskljucuje key repeat
-
-	glEnable(GL_COLOR_MATERIAL);
-	glEnable(GL_LIGHTING);
-
-
-	// Light property vectors.
-	float lightAmb[] = { 0.2, 0.2, 0.2, 1.0 };
-	float lightDif[] = { 1, 1, 1, 1.0 };
-	float lightSpec[] = { 1.0, 1.0, 1.0, 1.0 };
-	float lightPos[] = { 0, 5, 0, 1.0 };
-	float globAmb[] = { 0.0, 0.0, 0.0, 1.0 };
-
-	// Light properties.
-	glLightfv(GL_LIGHT0, GL_AMBIENT, lightAmb);
-	glLightfv(GL_LIGHT0, GL_DIFFUSE, lightDif);
-	glLightfv(GL_LIGHT0, GL_SPECULAR, lightSpec);
-	glLightfv(GL_LIGHT0, GL_POSITION, lightPos);
-	/*glLightf(GL_LIGHT0, GL_QUADRATIC_ATTENUATION, 0.001);
-	glLightf(GL_LIGHT0, GL_LINEAR_ATTENUATION, 0.001);
-	*/
-	glEnable(GL_LIGHT0); // Enable particular light source.
-	glLightModelfv(GL_LIGHT_MODEL_AMBIENT, globAmb); // Global ambient light.
-	glLightModeli(GL_LIGHT_MODEL_TWO_SIDE, GL_TRUE); // Enable two-sided lighting.
-	glLightModeli(GL_LIGHT_MODEL_LOCAL_VIEWER, GL_TRUE); // Enable local viewpoint.
 	glShadeModel(GL_SMOOTH); //set the shader to smooth shader
 
 	postaviScenu();
@@ -116,23 +99,11 @@ void setup(void)
 void display(void) 
 {
 	ShowCursor(false);
-	glClearColor(0.0, 0.7, 1.0, 1.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //clear the color buffer and the depth buffer
 	glLoadIdentity();
 
 	scena1.update();
 	scena1.draw();
-
-	// Material property vectors.
-	float matAmbAndDif1[] = { 0.9, 0.0, 0.0, 1.0 };
-	float matAmbAndDif2[] = { 0.0, 0.9, 0.0, 1.0 };
-	float matSpec[] = { 1.0, 1.0, 1.0, 1.0 };
-	float matShine[] = { 50.0 };
-
-	// Material properties of the box.
-	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, matAmbAndDif1);
-	glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, matSpec);
-	glMaterialfv(GL_FRONT_AND_BACK, GL_SHININESS, matShine);
 
 	glutSwapBuffers(); //swap the buffers
 }
@@ -163,6 +134,9 @@ void keyboardDown(unsigned char key, int x, int y)
 		break;
 	case 'c':
 		kamera.dole = true;
+		break;
+	case 'l':
+		kamera.letenje = !kamera.letenje;
 		break;
 	}
 }
@@ -204,8 +178,17 @@ void reshape(int w, int h)
 
 #pragma endregion
 
+void instrukcije()
+{
+	cout << "Kretanje na wasd i na misa" << endl
+		<< "skakanje na space i cucanj na c" << endl
+		<< "l za ukljucivanje i iskljucivanje letenja" << endl
+		<< "kad je ukljuceno letenje gore se ide na space a dole na c" << endl;
+}
+
 int main(int argc, char** argv) 
 {
+	instrukcije();
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_DEPTH | GLUT_MULTISAMPLE);
 	glutInitWindowSize(1280, 720);
