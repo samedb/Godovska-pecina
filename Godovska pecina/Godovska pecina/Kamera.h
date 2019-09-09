@@ -7,7 +7,7 @@ class Kamera :
 public:
 	float brzinaKretanja;
 	float mouseSensitivity;
-	bool napred, nazad, levo, desno;
+	bool napred, nazad, levo, desno, gore, dole;
 
 	Kamera(Transform transform = Transform());
 	void draw();

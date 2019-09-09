@@ -44,13 +44,13 @@ void Snesko::render()
 	glPopMatrix();
 	glPopMatrix();
 
-	// Draw a faux shadow beneath snow man (dark green circle)
-	glColor3f(0.0, 0.5, 0.0);
-	glPushMatrix();
-	glTranslatef(0.2, 0.001, 0.2);	// translate to just above ground
-	glScalef(1.0, 00, 1.0); // scale sphere into a flat pancake
-	glutSolidSphere(0.75, 10, 10); // shadow same size as body
-	glPopMatrix();
+	//// Draw a faux shadow beneath snow man (dark green circle)
+	//glColor3f(0.0, 0.5, 0.0);
+	//glPushMatrix();
+	//glTranslatef(0.2, 0.001, 0.2);	// translate to just above ground
+	//glScalef(1.0, 00, 1.0); // scale sphere into a flat pancake
+	//glutSolidSphere(0.75, 10, 10); // shadow same size as body
+	//glPopMatrix();
 }
 
 void Snesko::update()

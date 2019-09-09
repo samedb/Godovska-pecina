@@ -65,4 +65,6 @@ void Kamera::update()
 	// kameru pomerim za taj novi rotirani vektor
 	transform.position.x += x2 * brzinaKretanja;
 	transform.position.z += z2 * brzinaKretanja;
+
+	transform.position.y += (gore - dole) * brzinaKretanja;
 }
