@@ -132,6 +132,7 @@
     <ClCompile Include="Snesko.cpp" />
     <ClCompile Include="Sunce.cpp" />
     <ClCompile Include="Teren.cpp" />
+    <ClCompile Include="TextureManager.cpp" />
     <ClCompile Include="Transform.cpp" />
     <ClCompile Include="Vektor3f.cpp" />
   </ItemGroup>
@@ -144,6 +145,7 @@
     <ClInclude Include="Snesko.h" />
     <ClInclude Include="Sunce.h" />
     <ClInclude Include="Teren.h" />
+    <ClInclude Include="TextureManager.h" />
     <ClInclude Include="Transform.h" />
     <ClInclude Include="Vektor3f.h" />
   </ItemGroup>

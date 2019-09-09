@@ -1,12 +1,17 @@
 #include "Teren.h"
 
+TextureManager teksture;
+
 Teren::Teren(Transform transform)
 	:GameObject(transform)
 {
+	teksture.UcitajTeksture();
 }
 
 void pravougaonik(int x, int z) 
 {
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, teksture["pod"]);
 	for (int i = - x / 2; i <= x / 2; i += 2)
 		for (int j = -z / 2; j <= z / 2; j += 2)
 		{
@@ -14,13 +19,14 @@ void pravougaonik(int x, int z)
 			glTranslated(i, 0, j);
 			glBegin(GL_QUADS);
 			glNormal3f(0, -1, 0);
-			glVertex3f(-1, 0, -1);
-			glVertex3f(1, 0, -1);
-			glVertex3f(1, 0, 1);
-			glVertex3f(-1, 0, 1);
+			glTexCoord2d(i * 0.0, j * 0.0); glVertex3f(-1, 0, -1);
+			glTexCoord2d(i * 0.2, j * 0.0); glVertex3f(1, 0, -1);
+			glTexCoord2d(i * 0.2, j * 0.2); glVertex3f(1, 0, 1);
+			glTexCoord2d(i * 0.0, j * 0.2); glVertex3f(-1, 0, 1);
 			glEnd();
 			glPopMatrix();
 		}
+	glDisable(GL_TEXTURE_2D);
 }
 
 void Teren::render()
@@ -29,7 +35,7 @@ void Teren::render()
 	// Ovo moram malo bolje da uredim
 
 	// zelena podloga
-	glColor3f(0, 1, 0);
+	glColor3f(1, 1, 1);
 
 	glPushMatrix();
 	glTranslatef(0, -2, 0);
