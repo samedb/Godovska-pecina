@@ -11,7 +11,7 @@ Teren::Teren(Transform transform)
 void pravougaonik(int x, int z) 
 {
 	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, teksture["pod"]);
+	glBindTexture(GL_TEXTURE_2D, teksture["pod2"]);
 	for (int i = - x / 2; i <= x / 2; i += 2)
 		for (int j = -z / 2; j <= z / 2; j += 2)
 		{
@@ -19,10 +19,10 @@ void pravougaonik(int x, int z)
 			glTranslated(i, 0, j);
 			glBegin(GL_QUADS);
 			glNormal3f(0, -1, 0);
-			glTexCoord2d(i * 0.0, j * 0.0); glVertex3f(-1, 0, -1);
-			glTexCoord2d(i * 0.2, j * 0.0); glVertex3f(1, 0, -1);
-			glTexCoord2d(i * 0.2, j * 0.2); glVertex3f(1, 0, 1);
-			glTexCoord2d(i * 0.0, j * 0.2); glVertex3f(-1, 0, 1);
+			glTexCoord2d(0.0, 0.0); glVertex3f(-1, 0, -1);
+			glTexCoord2d( 1 , 0.0); glVertex3f( 1, 0, -1);
+			glTexCoord2d(1 , 1 ); glVertex3f( 1, 0,  1);
+			glTexCoord2d(0.0, 1); glVertex3f(-1, 0,  1);
 			glEnd();
 			glPopMatrix();
 		}
@@ -66,7 +66,7 @@ void Teren::render()
 	glPopMatrix();
 
 	// podloga izlaza
-	glColor3f(0, 1, 0);
+	glColor3f(1, 1, 1);
 	glPushMatrix();
 	glTranslatef(0, -2, -60);
 	pravougaonik(20, 20);

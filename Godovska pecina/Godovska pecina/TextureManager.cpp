@@ -9,8 +9,9 @@ GLuint TextureManager::LoadTexture(string path, int width, int height)
 	fin.open(path, ios::binary);
 
 	if (fin.is_open()) {
-		data = new char[width * height * 3];
-		fin.read(data, width * height * 3);
+		data = new char[width * height * 4];
+		fin.ignore(54, '\n');
+		fin.read(data, width * height * 4);
 		fin.close();
 	}
 
@@ -52,6 +53,8 @@ void TextureManager::UcitajTeksture()
 	DodajTeksturu("pod", "texture.raw", 256, 256);
 	DodajTeksturu("zid", "texture1.raw", 256, 256);
 	DodajTeksturu("plafon", "texture2.raw", 256, 256);
+	DodajTeksturu("pod2", "pixelart.bmp", 16, 16);
+	DodajTeksturu("pack", "texturepack.bmp", 16, 16);
 }
 
 GLuint& TextureManager::operator[](const string key)
