@@ -13,57 +13,19 @@
 #include "Scena.h"
 #include "HexPiramida.h"
 #include "LinijeKoordinatnogSistema.h"
+#include "TestScena1.h"
 
 using namespace std;
 
 #pragma region Scena
 
-Scena scena1;
+Scena scena;
 Kamera kamera = Kamera(Vektor3f(0, 2, 0));
 
 void postaviScenu()
 {
-	scena1.dodaj(&kamera);
-	// dodaj sneskove? oko terena
-	for (int i = -4; i < 5; i++)
-		for (int j = -4; j < 5; j++)
-			if (i == -4 || i == 4 || j == -4 || j ==4)
-				scena1.dodaj(new Snesko(Vektor3f(i * 10, -1, j * 10)));
-	// jedan veliki snesko u sredini
-	scena1.dodaj(new Snesko(Transform(Vektor3f(-10, -1, -10), Vektor3f(), Vektor3f(10, 10, 10))));
-	scena1.dodaj(new Snesko(Transform(Vektor3f(-15, -1, -15), Vektor3f(), Vektor3f(10, 10, 10))));
-	scena1.dodaj(new Teren());
-
-	// dodaj gameobjecte (kocke) sa random pozicijama
-	for (int i = 0; i < 10; i++)
-	{
-		float x = -5 * (rand() % 5 + 5);
-		float z = -5 * (rand() % 5 + 5);
-		scena1.dodaj(new GameObject(Vektor3f(x, 0, z)));
-	}
-
-
-	// iskorpiraj sve to u scenu2 i onda pomeri poziciju
-	Scena *scena2 = new Scena(scena1);
-	scena2->elementiScene[0] = scena2->elementiScene[2];
-	scena2->transform.position.z -= 120;
-	scena2->transform.rotation.y += 90;
-	scena1.dodaj(scena2);
-
-	Scena *scena3 = new Scena(scena1);
-	scena3->elementiScene[0] = scena3->elementiScene[2];
-	scena3->transform.position.x -= 120;
-	scena3->transform.rotation.y -= 90;
-	scena1.dodaj(scena3);
-
-	Scena *scena4 = new Scena(scena1);
-	scena4->elementiScene[0] = scena3->elementiScene[2];
-	scena4->transform.position.z -= 120;
-	scena4->transform.position.x -= 120;
-	scena4->transform.rotation.y += 180;
-	scena1.dodaj(scena4);
-	
-	scena1.dodaj(new Sunce(Vektor3f(0, 30, 0)));
+	scena.dodaj(&kamera);
+	scena.dodaj(new TestScena1());
 }		  
 
 #pragma endregion
@@ -102,8 +64,8 @@ void display(void)
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //clear the color buffer and the depth buffer
 	glLoadIdentity();
 
-	scena1.update();
-	scena1.draw();
+	scena.update();
+	scena.draw();
 
 	glutSwapBuffers(); //swap the buffers
 }

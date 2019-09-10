@@ -3,11 +3,13 @@
 #include "Transform.h"
 #include "GL/glut.h"
 #include "GL/gl.h"
+#include <iostream>
 
 class GameObject
 {
 public:
 	Transform transform;
+	std::string tekstura; // naziv pod kojim je tekstura ucitana u TextureManager
 
 	GameObject(Transform transform = Transform());
 	virtual void update(); // update posle svakog frejma

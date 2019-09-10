@@ -128,10 +128,12 @@
     <ClCompile Include="Kamera.cpp" />
     <ClCompile Include="LinijeKoordinatnogSistema.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Pravougaonik.cpp" />
     <ClCompile Include="Scena.cpp" />
     <ClCompile Include="Snesko.cpp" />
     <ClCompile Include="Sunce.cpp" />
     <ClCompile Include="Teren.cpp" />
+    <ClCompile Include="TestScena1.cpp" />
     <ClCompile Include="TextureManager.cpp" />
     <ClCompile Include="Transform.cpp" />
     <ClCompile Include="Vektor3f.cpp" />
@@ -141,10 +143,12 @@
     <ClInclude Include="HexPiramida.h" />
     <ClInclude Include="Kamera.h" />
     <ClInclude Include="LinijeKoordinatnogSistema.h" />
+    <ClInclude Include="Pravougaonik.h" />
     <ClInclude Include="Scena.h" />
     <ClInclude Include="Snesko.h" />
     <ClInclude Include="Sunce.h" />
     <ClInclude Include="Teren.h" />
+    <ClInclude Include="TestScena1.h" />
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="Transform.h" />
     <ClInclude Include="Vektor3f.h" />

@@ -1,90 +1,116 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    <Filter Include="Engine">
+      <UniqueIdentifier>{dc613a67-7af1-423e-a8aa-b2b360aeda19}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files">
+    <Filter Include="Engine\Header Files">
+      <UniqueIdentifier>{e3a6d21e-096d-4e5d-9096-6bdce995b35a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Source Files">
+      <UniqueIdentifier>{c9f57116-eab0-42b9-8715-3bcb448c7cb6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{51276cb6-c3e3-4476-bfe2-bc8e5c376488}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObjects">
+      <UniqueIdentifier>{691728bc-12a9-493a-aa50-e37f739f452d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObjects\Header Files">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    <Filter Include="GameObjects\Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="main">
+      <UniqueIdentifier>{dc4a69d1-6ffc-4944-99c4-c2f36602ffb1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Vektor3f.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Transform.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GameObject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Snesko.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>GameObjects\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Kamera.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>GameObjects\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Sunce.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>GameObjects\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Teren.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Scena.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>GameObjects\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="HexPiramida.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>GameObjects\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="LinijeKoordinatnogSistema.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>GameObjects\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Engine\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Scena.cpp">
+      <Filter>Engine\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TextureManager.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Engine\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Vektor3f.cpp">
+      <Filter>Engine\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Transform.cpp">
+      <Filter>Engine\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TestScena1.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="Pravougaonik.cpp">
+      <Filter>GameObjects\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Vektor3f.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Transform.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GameObject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Snesko.h">
-      <Filter>Header Files</Filter>
+      <Filter>GameObjects\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Kamera.h">
-      <Filter>Header Files</Filter>
+      <Filter>GameObjects\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Sunce.h">
-      <Filter>Header Files</Filter>
+      <Filter>GameObjects\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Teren.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Scena.h">
-      <Filter>Header Files</Filter>
+      <Filter>GameObjects\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="HexPiramida.h">
-      <Filter>Header Files</Filter>
+      <Filter>GameObjects\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="LinijeKoordinatnogSistema.h">
-      <Filter>Header Files</Filter>
+      <Filter>GameObjects\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Engine\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.h">
+      <Filter>Engine\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Vektor3f.h">
+      <Filter>Engine\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="TextureManager.h">
-      <Filter>Header Files</Filter>
+      <Filter>Engine\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Scena.h">
+      <Filter>Engine\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TestScena1.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Pravougaonik.h">
+      <Filter>GameObjects\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

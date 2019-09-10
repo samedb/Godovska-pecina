@@ -31,8 +31,7 @@ Sunce::Sunce(Transform transform)
 
 	// Postaljvanje osobina materijala
 	// Material property vectors.
-	float matAmbAndDif1[] = { 0.9, 0.0, 0.0, 1.0 };
-	float matAmbAndDif2[] = { 0.0, 0.9, 0.0, 1.0 };
+	float matAmbAndDif1[] = { 1, 1, 1, 1.0 };
 	float matSpec[] = { 1.0, 1.0, 1.0, 1.0 };
 	float matShine[] = { 50.0 };
 

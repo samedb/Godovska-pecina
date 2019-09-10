@@ -1,32 +1,52 @@
 #include "Teren.h"
+#include "Pravougaonik.h"
 
-TextureManager teksture;
+TextureManager *teksture;
 
 Teren::Teren(Transform transform)
 	:GameObject(transform)
 {
-	teksture.UcitajTeksture();
+	teksture = TextureManager::getInstance();
 }
 
 void pravougaonik(int x, int z) 
 {
 	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, teksture["pod2"]);
+	glBindTexture(GL_TEXTURE_2D, teksture->UzmiTeksturu("pod"));
 	for (int i = - x / 2; i <= x / 2; i += 2)
 		for (int j = -z / 2; j <= z / 2; j += 2)
 		{
+			float row = 0, column = 0;
 			glPushMatrix();
 			glTranslated(i, 0, j);
 			glBegin(GL_QUADS);
 			glNormal3f(0, -1, 0);
 			glTexCoord2d(0.0, 0.0); glVertex3f(-1, 0, -1);
-			glTexCoord2d( 1 , 0.0); glVertex3f( 1, 0, -1);
-			glTexCoord2d(1 , 1 ); glVertex3f( 1, 0,  1);
-			glTexCoord2d(0.0, 1); glVertex3f(-1, 0,  1);
+			glTexCoord2d(1, 0.0); glVertex3f(1, 0, -1);
+			glTexCoord2d(1, 1); glVertex3f(1, 0, 1);
+			glTexCoord2d(0.0, 1); glVertex3f(-1, 0, 1);
 			glEnd();
 			glPopMatrix();
 		}
 	glDisable(GL_TEXTURE_2D);
+	/*glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, teksture["pack"]);
+	for (int i = - x / 2; i <= x / 2; i += 2)
+		for (int j = -z / 2; j <= z / 2; j += 2)
+		{
+			float row = 0, column = 0;
+			glPushMatrix();
+			glTranslated(i, 0, j);
+			glBegin(GL_QUADS);
+			glNormal3f(0, -1, 0);
+			glTexCoord2d(column * 32 / 512,		  row * 32 / 512); glVertex3f(-1, 0, -1);
+			glTexCoord2d(column * 32 / 512,		  ((row + 1) * 32 - 1) / 512); glVertex3f(-1, 0,  1);
+			glTexCoord2d(((column + 1) * 32 - 1) / 512, ((row + 1) * 32 - 1) / 512); glVertex3f( 1, 0,  1);
+			glTexCoord2d(((column + 1) * 32 - 1) / 512, row * 32 / 512); glVertex3f( 1, 0, -1);
+			glEnd();
+			glPopMatrix();
+		}
+	glDisable(GL_TEXTURE_2D);*/
 }
 
 void Teren::render()
@@ -34,13 +54,15 @@ void Teren::render()
 
 	// Ovo moram malo bolje da uredim
 
-	// zelena podloga
+
 	glColor3f(1, 1, 1);
 
 	glPushMatrix();
 	glTranslatef(0, -2, 0);
 	pravougaonik(100, 100);
 	glPopMatrix();
+	Pravougaonik p(Transform(Vektor3f(0, -2, 0)), "zid");
+	p.draw();
 
 	// Ovako bi trebalo da se uradi i za zid
 
