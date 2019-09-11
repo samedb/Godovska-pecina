@@ -13,7 +13,7 @@ TestScena1::TestScena1(Transform transform)
 				dodaj(new Snesko(Vektor3f(i * 10, -1, j * 10)));
 	// jedan veliki snesko u sredini
 	dodaj(new Snesko(Transform(Vektor3f(-10, -1, -10), Vektor3f(), Vektor3f(10, 10, 10))));
-	dodaj(new Snesko(Transform(Vektor3f(-15, -1, -15), Vektor3f(), Vektor3f(10, 10, 10))));
+	//dodaj(new Snesko(Transform(Vektor3f(-15, -1, -15), Vektor3f(), Vektor3f(10, 10, 10))));
 	dodaj(new Teren());
 
 	// dodaj gameobjecte (kocke) sa random pozicijama
@@ -47,4 +47,11 @@ TestScena1::TestScena1(Transform transform)
 
 
 	dodaj(new Sunce(Vektor3f(0, 30, 0)));
+
+	// cekici
+	dodaj(new Cekic(Transform(Vektor3f(0, 10, -40), Vektor3f(0, 0, -40), Vektor3f(1, 1, 1))));
+	dodaj(new Cekic(Transform(Vektor3f(0, 10, -50), Vektor3f(0, 0, -20), Vektor3f(1, 1, 1))));
+	dodaj(new Cekic(Transform(Vektor3f(0, 10, -60))));								
+	dodaj(new Cekic(Transform(Vektor3f(0, 10, -70), Vektor3f(0, 0, 20), Vektor3f(1, 1, 1))));
+	dodaj(new Cekic(Transform(Vektor3f(0, 10, -80), Vektor3f(0, 0, 40), Vektor3f(1, 1, 1))));
 }

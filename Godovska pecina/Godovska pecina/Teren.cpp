@@ -12,7 +12,7 @@ Teren::Teren(Transform transform)
 void pravougaonik(int x, int z) 
 {
 	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, teksture->UzmiTeksturu("pod"));
+	glBindTexture(GL_TEXTURE_2D, teksture->UzmiTeksturu("plafon"));
 	for (int i = - x / 2; i <= x / 2; i += 2)
 		for (int j = -z / 2; j <= z / 2; j += 2)
 		{
@@ -61,8 +61,6 @@ void Teren::render()
 	glTranslatef(0, -2, 0);
 	pravougaonik(100, 100);
 	glPopMatrix();
-	Pravougaonik p(Transform(Vektor3f(0, -2, 0)), "zid");
-	p.draw();
 
 	// Ovako bi trebalo da se uradi i za zid
 
@@ -81,9 +79,8 @@ void Teren::render()
 
 	// zid sa otvorom
 	glPushMatrix();
-	glTranslatef(-51, 0, 30);
-	glRotatef(90, 0, 0, 1);
-	pravougaonik(4, 39);
+	glTranslatef(-50.5, 0, 30);
+	glScalef(1, 4, 40);
 	glutSolidCube(1);
 	glPopMatrix();
 

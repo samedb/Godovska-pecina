@@ -30,5 +30,8 @@ void GameObject::draw()
 
 void GameObject::render()
 {
+	glColor3f(1, 0.75, 0.8);
 	glutSolidCube(1);
+	glColor3f(0, 0, 0);
+	glutWireCube(1);
 }

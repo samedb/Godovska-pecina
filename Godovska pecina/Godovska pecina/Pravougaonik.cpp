@@ -34,8 +34,8 @@ void Pravougaonik::render()
 
 	int texX, texZ;
 
-	for (int x = -transform.scale.x / 2; x <= transform.scale.x / 2; x++)
-		for (int z = -transform.scale.z / 2; z <= transform.scale.z / 2; z++)
+	for (int x = -transform.scale.x / 2; x <= transform.scale.x / 2; x += 2)
+		for (int z = -transform.scale.z / 2; z <= transform.scale.z / 2; z += 2)
 		{
 			texX = x + transform.scale.x / 2;
 			texZ = z + transform.scale.z / 2;
@@ -43,12 +43,11 @@ void Pravougaonik::render()
 			glTranslatef(x, 0, z);
 			glBegin(GL_TRIANGLE_STRIP);
 			glNormal3f(0, 1, 0);
-			glTexCoord2d((texX + 1) * sirina,	texZ * visina);					glVertex3f(0.5,  0, -0.5);
-			glTexCoord2d( texX * sirina,		texZ * visina);					glVertex3f(-0.5, 0, -0.5);
-			glTexCoord2d((texX + 1) * sirina,  (texZ + 1) * visina);			glVertex3f(0.5,  0, 0.5);
-			glTexCoord2d( texX * sirina,       (texZ + 1) * visina);			glVertex3f(-0.5, 0, 0.5);
+			glTexCoord2d((texX + 2) * sirina,	texZ * visina);					glVertex3f( 1.0, 0, -1.0);
+			glTexCoord2d( texX * sirina,		texZ * visina);					glVertex3f(-1.0, 0, -1.0);
+			glTexCoord2d((texX + 2) * sirina,  (texZ + 2) * visina);			glVertex3f( 1.0, 0, 1.0);
+			glTexCoord2d( texX * sirina,       (texZ + 2) * visina);			glVertex3f(-1.0, 0, 1.0);
 			glEnd();
 			glPopMatrix();
 		}
-
 }

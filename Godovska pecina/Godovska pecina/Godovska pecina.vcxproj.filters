@@ -71,6 +71,9 @@
     <ClCompile Include="Pravougaonik.cpp">
       <Filter>GameObjects\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Cekic.cpp">
+      <Filter>GameObjects\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Snesko.h">
@@ -110,6 +113,9 @@
       <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="Pravougaonik.h">
+      <Filter>GameObjects\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cekic.h">
       <Filter>GameObjects\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
